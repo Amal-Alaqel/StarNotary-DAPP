@@ -35,14 +35,8 @@ const App = {
     const { createStar } = this.meta.methods;
     const name = document.getElementById("starName").value;
     const id = document.getElementById("starId").value;
-    let StarName = await instance.tokenIdToStarInfo.call(id);
-    if (StarName != "") {
-      App.setStatus("Star ID already exists.");
-    }
-    else {
-      await createStar(name, id).send({from: this.account});
-      App.setStatus("New Star Owner is " + this.account + ".");
-    }
+    await createStar(name, id).send({from: this.account});
+    App.setStatus("New Star Owner is " + this.account + ".");
   },
 
   // Implement Task 4 Modify the front end of the DAPP
